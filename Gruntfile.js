@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       cname: {
         files: [
-          {expand: true, flatten: true, src: ['app/CNAME'], dest: 'public/CNAME', filter: 'isFile'},
+          {expand: true, cwd: 'app/', src: ['CNAME'], dest: 'public/'},
         ]
       }
     },
