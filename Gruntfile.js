@@ -25,6 +25,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, flatten: true, src: ['app/assets/images/*'], dest: 'public/assets/images/', filter: 'isFile'},
         ]
+      },
+      cname: {
+        files: [
+          {expand: true, flatten: true, src: ['app/CNAME'], dest: 'public/CNAME', filter: 'isFile'},
+        ]
       }
     },
     concat: {
@@ -84,6 +89,10 @@ module.exports = function(grunt) {
         html: {
           files: ['./app/*.html'],
           tasks: ['concat:index'],
+        },
+        cname: {
+          files: ['./app/CNAME'],
+          tasks: ['copy:cname'],
         },
       }
     });
