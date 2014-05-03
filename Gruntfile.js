@@ -2,8 +2,14 @@ module.exports = function(grunt) {
 
   //Initializing the configuration object
     grunt.initConfig({
-
-      // Task configuration
+    connect: {
+      server: {
+        options: {
+          port: 3000,
+          base: 'public'
+        }
+      }
+    },
     less: {
         development: {
             options: {
@@ -14,11 +20,18 @@ module.exports = function(grunt) {
             }
         }
     },
+    copy: {
+      images: {
+        files: [
+          {expand: true, flatten: true, src: ['app/assets/images/*'], dest: 'public/assets/images/', filter: 'isFile'},
+        ]
+      }
+    },
     concat: {
-      options: {
-        separator: ';',
-      },
       js: {
+        options: {
+          separator: ';',
+        },
         src: [
           './bower_components/jquery/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
@@ -26,10 +39,18 @@ module.exports = function(grunt) {
         ],
         dest: './public/assets/javascript/hoglan.js',
       },
+      index: {
+        src: [
+          './app/header.html',
+          './app/index.html',
+          './app/footer.html'
+        ],
+        dest: './public/index.html',
+      },
     },
     uglify: {
       options: {
-        mangle: false  // Use if you want the names of your functions and variables unchanged
+        mangle: false
       },
       main: {
         files: {
@@ -44,7 +65,7 @@ module.exports = function(grunt) {
         }
     },
     watch: {
-        js_frontend: {
+        js: {
           files: [
             './bower_components/jquery/jquery.js',
             './bower_components/bootstrap/dist/js/bootstrap.js',
@@ -56,6 +77,14 @@ module.exports = function(grunt) {
           files: ['./app/assets/stylesheets/*.less'],
           tasks: ['less'],
         },
+        images: {
+          files: ['./app/assets/images/*'],
+          tasks: ['copy:images'],
+        },
+        html: {
+          files: ['./app/*.html'],
+          tasks: ['concat:index'],
+        },
       }
     });
 
@@ -64,8 +93,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Task definition
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['connect', 'watch']);
 
 };
