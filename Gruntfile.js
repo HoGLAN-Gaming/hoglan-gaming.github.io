@@ -53,11 +53,16 @@ module.exports = function(grunt) {
           data: {
             'header': fs.readFileSync('app/header.html'),
             'footer': fs.readFileSync('app/footer.html'),
+            'sidebar': fs.readFileSync('app/sidebar.html'),
           }
         },
         'files': {
           'public/index.html': ['app/pages/index.html'],
-          'public/about.html': ['app/pages/about.html']
+          'public/about/index.html': ['app/pages/about.html'],
+          'public/activities/index.html': ['app/pages/activities.html'],
+          'public/checklist/index.html': ['app/pages/checklist.html'],
+          'public/gameslist/index.html': ['app/pages/gameslist.html'],
+          'public/location/index.html': ['app/pages/location.html']
         }
       }
     },
@@ -95,7 +100,11 @@ module.exports = function(grunt) {
         tasks: ['copy:images'],
       },
       html: {
-        files: ['./app/*.html', '.app/pages/*.html'],
+        files: ['./app/*.html'],
+        tasks: ['template'],
+      },
+      pages: {
+        files: ['./app/pages/*.html'],
         tasks: ['template'],
       },
       cname: {

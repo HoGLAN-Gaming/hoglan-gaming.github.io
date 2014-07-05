@@ -2,7 +2,7 @@
 @import '../../../bower_components/bootstrap/less/bootstrap.less';
 
 @body-bg: #000;
-@grid-gutter-width: 0px;
+@grid-gutter-width: 50px;
 @brand-primary: #ff3a00;
 @gray-dark: #fff;
 @text-color: #000;
@@ -16,6 +16,12 @@
 
 body {
   padding-top: 70px;
+}
+
+.home-content {
+  .col-sm-4 {
+    padding: 0px;
+  }
 }
 
 .page-header {
@@ -63,10 +69,27 @@ body {
 }
 
 .content-container {
+  .container();
   background-color: @gray-dark;
   border-top: 5px solid @brand-primary;
+  min-height: 705px;
 
   .page-header {
     text-align: left;
+    margin-bottom: 0px;
+
+    h1 {
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 300%;
+      small {
+        padding-left: 1em;
+        font-size: 40%;
+      }
+    }
   }
+}
+
+.title-image {
+  .img-responsive();
+  margin: 0 auto;
 }
