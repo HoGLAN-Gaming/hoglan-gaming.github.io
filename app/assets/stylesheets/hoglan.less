@@ -1,4 +1,3 @@
-
 @import 'stickyfooter.less';
 @import '../../../bower_components/bootstrap/less/bootstrap.less';
 
@@ -6,12 +5,45 @@
 @grid-gutter-width: 0px;
 @brand-primary: #ff3a00;
 @gray-dark: #fff;
+@text-color: #000;
+@layout-text-color: #fff;
+
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
 
 @buffer-size: 30px;
+
+body {
+  padding-top: 70px;
+}
 
 .page-header {
   text-align: center;
   border: none;
+  margin-top: 15px;
+
+  .lead {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 340%;
+    padding: 0px;
+    margin: 0px;
+    color: @layout-text-color;
+  }
+
+  .sublead {
+    color: @brand-primary;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 200%;
+    padding-bottom: 20px;
+  }
+
+  .subtitle {
+    color: @layout-text-color;
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 120%;
+  }
 }
 
 .buffer-top {
@@ -30,26 +62,11 @@
   margin-left: @buffer-size;
 }
 
-.lead {
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 340%;
-  padding: 0px;
-  margin: 0px;
-}
+.content-container {
+  background-color: @gray-dark;
+  border-top: 5px solid @brand-primary;
 
-.sublead {
-  color: @brand-primary;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 200%;
-  padding-bottom: 20px;
-}
-
-.subtitle {
-  text-transform: uppercase;
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 120%;
-}
-
-.page-header {
-  margin-top: 15px;
+  .page-header {
+    text-align: left;
+  }
 }

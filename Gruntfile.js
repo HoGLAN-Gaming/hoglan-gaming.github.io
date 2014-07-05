@@ -1,7 +1,9 @@
+var fs = require('fs');
+
 module.exports = function(grunt) {
 
   //Initializing the configuration object
-    grunt.initConfig({
+  grunt.initConfig({
     connect: {
       server: {
         options: {
@@ -11,14 +13,14 @@ module.exports = function(grunt) {
       }
     },
     less: {
-        development: {
-            options: {
-              compress: true,  //minifying the result
-            },
-            files: {
-              "./public/assets/stylesheets/hoglan.css":"./app/assets/stylesheets/hoglan.less",
-            }
+      development: {
+        options: {
+          compress: true,  //minifying the result
+        },
+        files: {
+          "./public/assets/stylesheets/hoglan.css":"./app/assets/stylesheets/hoglan.less",
         }
+      }
     },
     copy: {
       images: {
@@ -44,14 +46,20 @@ module.exports = function(grunt) {
         ],
         dest: './public/assets/javascript/hoglan.js',
       },
-      index: {
-        src: [
-          './app/header.html',
-          './app/index.html',
-          './app/footer.html'
-        ],
-        dest: './public/index.html',
-      },
+    },
+    'template': {
+      'pages': {
+        'options': {
+          data: {
+            'header': fs.readFileSync('app/header.html'),
+            'footer': fs.readFileSync('app/footer.html'),
+          }
+        },
+        'files': {
+          'public/index.html': ['app/pages/index.html'],
+          'public/about.html': ['app/pages/about.html']
+        }
+      }
     },
     uglify: {
       options: {
@@ -64,38 +72,38 @@ module.exports = function(grunt) {
       },
     },
     phpunit: {
-        classes: {
-        },
-        options: {
-        }
+      classes: {
+      },
+      options: {
+      }
     },
     watch: {
-        js: {
-          files: [
-            './bower_components/jquery/jquery.js',
-            './bower_components/bootstrap/dist/js/bootstrap.js',
-            './app/assets/javascript/hoglan.js'
-            ],   
-          tasks: ['concat:js','uglify:main'],
-        },
-        less: {
-          files: ['./app/assets/stylesheets/*.less'],
-          tasks: ['less'],
-        },
-        images: {
-          files: ['./app/assets/images/*'],
-          tasks: ['copy:images'],
-        },
-        html: {
-          files: ['./app/*.html'],
-          tasks: ['concat:index'],
-        },
-        cname: {
-          files: ['./app/CNAME'],
-          tasks: ['copy:cname'],
-        },
-      }
-    });
+      js: {
+        files: [
+          './bower_components/jquery/jquery.js',
+          './bower_components/bootstrap/dist/js/bootstrap.js',
+          './app/assets/javascript/hoglan.js'
+        ],   
+        tasks: ['concat:js','uglify:main'],
+      },
+      less: {
+        files: ['./app/assets/stylesheets/*.less'],
+        tasks: ['less'],
+      },
+      images: {
+        files: ['./app/assets/images/*'],
+        tasks: ['copy:images'],
+      },
+      html: {
+        files: ['./app/*.html', '.app/pages/*.html'],
+        tasks: ['template'],
+      },
+      cname: {
+        files: ['./app/CNAME'],
+        tasks: ['copy:cname'],
+      },
+    }
+  });
 
   // Plugin loading
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -104,6 +112,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-template');
 
   // Task definition
   grunt.registerTask('default', ['connect', 'watch']);
