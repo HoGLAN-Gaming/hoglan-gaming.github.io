@@ -1,0 +1,3 @@
+[submodule "deploy"]
+	path = deploy
+	url = git@github.com:HoGLAN-Gaming/hoglan-gaming.github.io.git

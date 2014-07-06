@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 3000,
-          base: 'public'
+          base: 'deploy'
         }
       }
     },
@@ -18,19 +18,19 @@ module.exports = function(grunt) {
           compress: true,  //minifying the result
         },
         files: {
-          "./public/assets/stylesheets/hoglan.css":"./app/assets/stylesheets/hoglan.less",
+          "./deploy/assets/stylesheets/hoglan.css":"./app/assets/stylesheets/hoglan.less",
         }
       }
     },
     copy: {
       images: {
         files: [
-          {expand: true, flatten: true, src: ['app/assets/images/*'], dest: 'public/assets/images/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['app/assets/images/*'], dest: 'deploy/assets/images/', filter: 'isFile'},
         ]
       },
       cname: {
         files: [
-          {expand: true, cwd: 'app/', src: ['CNAME'], dest: 'public/'},
+          {expand: true, cwd: 'app/', src: ['CNAME'], dest: 'deploy/'},
         ]
       }
     },
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/hoglan.js'
         ],
-        dest: './public/assets/javascript/hoglan.js',
+        dest: './deploy/assets/javascript/hoglan.js',
       },
     },
     'template': {
@@ -57,12 +57,12 @@ module.exports = function(grunt) {
           }
         },
         'files': {
-          'public/index.html': ['app/pages/index.html'],
-          'public/about/index.html': ['app/pages/about.html'],
-          'public/activities/index.html': ['app/pages/activities.html'],
-          'public/checklist/index.html': ['app/pages/checklist.html'],
-          'public/gameslist/index.html': ['app/pages/gameslist.html'],
-          'public/location/index.html': ['app/pages/location.html']
+          'deploy/index.html': ['app/pages/index.html'],
+          'deploy/about/index.html': ['app/pages/about.html'],
+          'deploy/activities/index.html': ['app/pages/activities.html'],
+          'deploy/checklist/index.html': ['app/pages/checklist.html'],
+          'deploy/gameslist/index.html': ['app/pages/gameslist.html'],
+          'deploy/location/index.html': ['app/pages/location.html']
         }
       }
     },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
       },
       main: {
         files: {
-          './public/assets/javascript/hoglan.js': './public/assets/javascript/hoglan.js',
+          './deploy/assets/javascript/hoglan.js': './deploy/assets/javascript/hoglan.js',
         }
       },
     },
