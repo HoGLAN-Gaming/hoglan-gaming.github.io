@@ -40,7 +40,7 @@ module.exports = function(grunt) {
           separator: ';',
         },
         src: [
-          './bower_components/jquery/jquery.js',
+          './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/hoglan.js'
         ],
@@ -76,16 +76,10 @@ module.exports = function(grunt) {
         }
       },
     },
-    phpunit: {
-      classes: {
-      },
-      options: {
-      }
-    },
     watch: {
       js: {
         files: [
-          './bower_components/jquery/jquery.js',
+          './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/hoglan.js'
         ],   
