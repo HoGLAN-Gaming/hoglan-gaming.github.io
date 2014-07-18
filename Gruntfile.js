@@ -60,6 +60,7 @@ module.exports = function(grunt) {
           'deploy/index.html': ['app/pages/index.html'],
           'deploy/about/index.html': ['app/pages/about.html'],
           'deploy/activities/index.html': ['app/pages/activities.html'],
+          'deploy/faq/index.html': ['app/pages/faq.html'],
           'deploy/checklist/index.html': ['app/pages/checklist.html'],
           'deploy/gameslist/index.html': ['app/pages/gameslist.html'],
           'deploy/location/index.html': ['app/pages/location.html']
