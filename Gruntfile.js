@@ -48,6 +48,17 @@ module.exports = function(grunt) {
       },
     },
     'template': {
+      'homepage': {
+        'options': {
+          data: {
+            'header': fs.readFileSync('app/home_header.html'),
+            'footer': fs.readFileSync('app/footer.html'),
+          }
+        },
+        'files': {
+          'deploy/index.html': ['app/pages/index.html'],
+        }
+      },
       'pages': {
         'options': {
           data: {
@@ -57,7 +68,6 @@ module.exports = function(grunt) {
           }
         },
         'files': {
-          'deploy/index.html': ['app/pages/index.html'],
           'deploy/about/index.html': ['app/pages/about.html'],
           'deploy/activities/index.html': ['app/pages/activities.html'],
           'deploy/faq/index.html': ['app/pages/faq.html'],
@@ -91,7 +101,7 @@ module.exports = function(grunt) {
         tasks: ['less'],
       },
       images: {
-        files: ['./app/assets/images/*'],
+        files: ['./app/assets/images/*.jpg'],
         tasks: ['copy:images'],
       },
       html: {
