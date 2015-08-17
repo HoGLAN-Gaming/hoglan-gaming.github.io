@@ -74,12 +74,40 @@ body {
   margin-left: @buffer-size;
 }
 
+@media (min-width:1200px){
+	.container {
+    padding-left: 8px
+	}
+}
+
+@media (min-width:992px){
+	.container {
+    padding-left: 8px
+	}
+}
+
+@media (min-width:768px){
+	.container {
+    padding-left: 8px
+	}
+}
+
+.container {
+  padding-left: 0px;
+  padding-right: 0px
+}
+
+.navbar-brand {
+  padding-left: 50px
+}
+
 .content-container {
-  .container();
   background-color: @gray-dark;
   border-top: 5px solid @brand-primary;
   min-height: 705px;
   font-size: 140%;
+  padding-left: 25px;
+  padding-right: 25px;
 
   h3 {
     font-family: 'Titillium Web', sans-serif;
