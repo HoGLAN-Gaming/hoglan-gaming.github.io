@@ -74,6 +74,7 @@ module.exports = function(grunt) {
           'deploy/checklist/index.html': ['app/pages/checklist.html'],
           'deploy/gameslist/index.html': ['app/pages/gameslist.html'],
           'deploy/location/index.html': ['app/pages/location.html']
+          'deploy/exhibiting/index.html': ['app/pages/exhibiting.html']
         }
       }
     },
@@ -93,7 +94,7 @@ module.exports = function(grunt) {
           './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/hoglan.js'
-        ],   
+        ],
         tasks: ['concat:js','uglify:main'],
       },
       less: {
