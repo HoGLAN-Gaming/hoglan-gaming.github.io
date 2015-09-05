@@ -73,7 +73,7 @@ module.exports = function(grunt) {
           'deploy/faq/index.html': ['app/pages/faq.html'],
           'deploy/checklist/index.html': ['app/pages/checklist.html'],
           'deploy/gameslist/index.html': ['app/pages/gameslist.html'],
-          'deploy/location/index.html': ['app/pages/location.html']
+          'deploy/location/index.html': ['app/pages/location.html'],
           'deploy/exhibiting/index.html': ['app/pages/exhibiting.html']
         }
       }
