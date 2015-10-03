@@ -131,6 +131,7 @@ module.exports = function(grunt) {
 
   // Task definition
   grunt.registerTask('default', ['connect', 'watch']);
-  grunt.registerTask('generate', ['copy', 'less', 'uglify', 'template']);
+  grunt.registerTask('generate', ['copy', 'less', 'template', 'concat', 'uglify']);
+
 
 };
