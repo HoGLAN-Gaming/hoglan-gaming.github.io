@@ -75,7 +75,8 @@ module.exports = function(grunt) {
           'deploy/gameslist/index.html': ['app/pages/gameslist.html'],
           'deploy/location/index.html': ['app/pages/location.html'],
           'deploy/exhibiting/index.html': ['app/pages/exhibiting.html'],
-          'deploy/tos/index.html': ['app/pages/tos.html']
+          'deploy/tos/index.html': ['app/pages/tos.html'],
+          'deploy/privacy/index.html': ['app/pages/privacy.html']
         }
       }
     },
